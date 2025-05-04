@@ -3,8 +3,7 @@ import {
 } from "react-router";
 import Root from '../Root/Roots';
 import Home from '../Pages/Home/Home';
-import Login from '../Pages/Login/Login';
-
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 
 
@@ -19,11 +18,11 @@ export const router = createBrowserRouter([
          index : true,
          path : "/",
          Component : Home
-      }
+      },
+      {
+      path : 'ContactUs',
+      Component: ContactUs
+    },
     ]
-  },
-  {
-    path: "/login",
-    Component: Login,
   },
 ]);
