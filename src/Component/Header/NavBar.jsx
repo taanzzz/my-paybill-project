@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import iconImage from '../../assets/pay.png';
+import Profile from '../../Pages/MyProfile/MyProfile';
 import { NavLink } from "react-router";
+import { AuthContext } from "../../Pages/AuthContext/AuthContext";
 
 const Navbar = () => {
+ const {user} = useContext(AuthContext);
   const angkor = (
     <>
       <li>
@@ -35,7 +38,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/Regis"
+          to="/userProfile"
           className={({ isActive }) =>
             `m-6 ${
               isActive
@@ -44,9 +47,10 @@ const Navbar = () => {
             }`
           }
         >
-          My profile
+           My Profile
         </NavLink>
       </li>
+  
       <li>
         <NavLink
           to="/ContactUs"
@@ -64,7 +68,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 px-[50px] shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -86,7 +90,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-gray-200 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {angkor}
           </ul>
@@ -94,7 +98,7 @@ const Navbar = () => {
         <div className="hidden lg:flex  items-center  ">
   <img 
     src={iconImage}
-    className="h-[40px] w-[40px] ml-[50px] rounded-xl"
+    className="h-[40px] w-[40px]  rounded-xl"
   />
   <a className="text-2xl font-bold ml-1">
     <span className="text-blue-600 font-bold text-xl hover:text-blue-800 transition duration-300">Pay</span>
@@ -108,14 +112,16 @@ const Navbar = () => {
         {angkor}
         </ul>
       </div>
-      <div className="navbar-end gap-1 mr-[50px] ">
-        <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition duration-300 ease-in-out">
-  Login
-</button>
-<button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition duration-300 ease-in-out ml-2">
-  Register
-</button>
-
+      
+      <div className="navbar-end">
+        {user ? (
+          <Profile user={user} />
+        ) : (
+          <>
+            <NavLink to="/login" className="btn btn-sm bg-blue-600 text-white mr-2">Login</NavLink>
+            <NavLink to="/register" className="btn btn-sm bg-green-600 text-white">Register</NavLink>
+          </>
+        )}
       </div>
     </div>
   );
