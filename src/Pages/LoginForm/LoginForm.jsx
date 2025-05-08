@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const LoginForm = () => {
-  const { user, login, register, logout, googleSignIn } = useContext(AuthContext);
+  const { user, login, register, logout, googleSignIn,resetPassword } = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
@@ -49,6 +49,20 @@ const LoginForm = () => {
   const handleLogout = async () => {
     await logout();
   };
+  const handleForgetPassword = async () => {
+  if (!formData.email) {
+    toast.error('Please enter your email first.');
+    return;
+  }
+  try {
+    await resetPassword(formData.email);
+    toast.success('Password reset email sent!');
+  } catch (err) {
+    console.error(err);
+    toast.error('Failed to send reset email.');
+  }
+};
+
 
   return (
     <>
@@ -129,7 +143,8 @@ const LoginForm = () => {
             </button>
 
             <div className="flex justify-between text-sm text-white mt-2">
-              <button type="button" className="hover:underline">Forget Password</button>
+              <button type="button" onClick={handleForgetPassword} className="hover:underline">Forget Password</button>
+
               <button
                 type="button"
                 onClick={() => setIsLogin(!isLogin)}

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from './../../firebase/firebase.init';
 
 export const AuthContext = createContext();
@@ -12,6 +12,11 @@ export const AuthProvider = ({ children }) => {
     const stored = localStorage.getItem('balance');
     return stored ? JSON.parse(stored) : 1000000;
   });
+  
+  const resetPassword = async (email) => {
+  await sendPasswordResetEmail(auth, email);
+};
+
 
   const [paidBills, setPaidBills] = useState(() => {
     const stored = localStorage.getItem('paidBills');
@@ -110,6 +115,7 @@ export const AuthProvider = ({ children }) => {
         hasPaidBill,
         paidBillsDetails,
         addBillDetails,
+        resetPassword,
       }}
     >
       {children}
