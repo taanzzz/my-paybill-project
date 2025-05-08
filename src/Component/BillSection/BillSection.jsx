@@ -99,7 +99,7 @@ const BillSection = () => {
             >
               <div className="card-body items-center text-center">
                 <img src={bill.logourl} alt={`${bill.organization} logo`} className="w-16 h-16 object-contain mb-4" />
-                <h2 className="card-title">{bill.organization}</h2>
+                <h2 className="card-title font-extrabold ">{bill.organization}</h2>
                 <p className="text-sm text-gray-500">{bill.billType} Bill</p>
                 <p className="text-lg font-semibold text-primary">৳ {bill.amount}</p>
                 <p className="text-sm text-gray-400">Due: {bill.dueDate} ({bill.dueDay})</p>

@@ -6,6 +6,7 @@ import {
 } from "react-router";
 import { router } from './Routes/Routes.jsx'
 import { AuthProvider } from './Pages/AuthContext/AuthContext.jsx';
+import './app.css';
 
 
 createRoot(document.getElementById('root')).render(

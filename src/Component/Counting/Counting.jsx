@@ -72,7 +72,7 @@ const Counting = () => {
               className="p-4"
             >
               <IconComponent className="h-10 w-10 mx-auto text-white" />
-              <h3 className="text-4xl font-bold mt-2">
+              <h3 className="text-4xl font-extrabold mt-2">
                 {startCount ? <CountUp end={item.number} duration={3} /> : "0"}
                 {item.suffix || ""}
               </h3>

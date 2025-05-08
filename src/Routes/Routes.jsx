@@ -11,6 +11,7 @@ import RegisterForm from './../Pages/RegisterForm/RegisterForm';
 import { createBrowserRouter } from 'react-router';
 import BillCarousel from '../Component/Banner/BillCarousel';
 
+
 export const router = createBrowserRouter([
   {
     path: "/",

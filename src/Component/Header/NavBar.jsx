@@ -13,7 +13,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             `m-6 ${isActive
-              ? 'border-b-2 border-black font-bold'
+              ? 'bg-blue-500 text-white font-bold'
               : 'text-[#0F0F0FB3]'
             }`
           }
@@ -26,7 +26,7 @@ const Navbar = () => {
         <NavLink
           to={user ? "/mybills" : "/login"}
           className={({ isActive }) =>
-            `m-6 ${isActive ? 'border-b-2 border-black font-bold' : 'text-[#0F0F0FB3]'}`
+            `m-6 ${isActive ? 'bg-blue-500 text-white font-bold' : 'text-[#0F0F0FB3]'}`
           }
         >
           My Bills
@@ -37,7 +37,7 @@ const Navbar = () => {
         <NavLink
           to={user ? "/history" : "/login"}
           className={({ isActive }) =>
-            `m-6 ${isActive ? 'border-b-2 border-black font-bold' : 'text-[#0F0F0FB3]'}`
+            `m-6 ${isActive ? 'bg-blue-500 text-white font-bold' : 'text-[#0F0F0FB3]'}`
           }
         >
           Paid Bills
@@ -49,7 +49,7 @@ const Navbar = () => {
           to="/userProfile"
           className={({ isActive }) =>
             `m-6 ${isActive
-              ? 'border-b-2 border-black font-bold'
+              ? 'bg-blue-500 text-white font-bold'
               : 'text-[#0F0F0FB3]'
             }`
           }
@@ -63,7 +63,7 @@ const Navbar = () => {
           to="/ContactUs"
           className={({ isActive }) =>
             `m-6 ${isActive
-              ? 'border-b-2 border-black font-bold'
+              ? 'bg-blue-500 text-white font-bold'
               : 'text-[#0F0F0FB3]'
             }`
           }
