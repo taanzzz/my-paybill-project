@@ -57,7 +57,7 @@
     "id": "rent",
     "organization": "House Rent",
     "billType": "Rent",
-    "amount": 15000,
+    "amount": 3000,
     "dueDate": "1-06-2025",
     "dueDay": "Monday",
     "logourl": "https://i.postimg.cc/KYqj4mBQ/rent-home-logo-vector-32088922.jpg"
