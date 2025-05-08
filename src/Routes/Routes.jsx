@@ -62,3 +62,13 @@ export const router = createBrowserRouter([
     Component: RegisterForm,
   },
 ]);
+
+const App = () => {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
+};
+
+export default App;
