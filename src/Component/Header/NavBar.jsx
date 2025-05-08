@@ -13,7 +13,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             `m-6 ${isActive
-              ? 'underline font-semibold'
+              ? 'border-b-2 border-black font-bold'
               : 'text-[#0F0F0FB3]'
             }`
           }
@@ -21,11 +21,12 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+      
       <li className="font-bold"> 
         <NavLink
-          to={user ? "/history" : "/login"}
+          to={user ? "/mybills" : "/login"}
           className={({ isActive }) =>
-            `m-6 ${isActive ? 'underline font-semibold' : 'text-[#0F0F0FB3]'}`
+            `m-6 ${isActive ? 'border-b-2 border-black font-bold' : 'text-[#0F0F0FB3]'}`
           }
         >
           My Bills
@@ -34,10 +35,21 @@ const Navbar = () => {
       </li>
       <li className="font-bold"> 
         <NavLink
+          to={user ? "/history" : "/login"}
+          className={({ isActive }) =>
+            `m-6 ${isActive ? 'border-b-2 border-black font-bold' : 'text-[#0F0F0FB3]'}`
+          }
+        >
+          Paid Bills
+        </NavLink>
+
+      </li>
+      <li className="font-bold"> 
+        <NavLink
           to="/userProfile"
           className={({ isActive }) =>
             `m-6 ${isActive
-              ? 'underline font-semibold'
+              ? 'border-b-2 border-black font-bold'
               : 'text-[#0F0F0FB3]'
             }`
           }
@@ -51,7 +63,7 @@ const Navbar = () => {
           to="/ContactUs"
           className={({ isActive }) =>
             `m-6 ${isActive
-              ? 'underline font-semibold'
+              ? 'border-b-2 border-black font-bold'
               : 'text-[#0F0F0FB3]'
             }`
           }

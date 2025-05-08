@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   const [balance, setBalance] = useState(() => {
     const stored = localStorage.getItem('balance');
-    return stored ? JSON.parse(stored) : 1000000;
+    return stored ? JSON.parse(stored) : 100000;
   });
   
   const resetPassword = async (email) => {
@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     await signOut(auth);
     setUser(null);
-    setBalance(1000000);
+    setBalance(10000);
     setPaidBills([]);
     setPaidBillsDetails([]);
     localStorage.clear();

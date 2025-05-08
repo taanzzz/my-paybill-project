@@ -9,6 +9,7 @@ import History from './../Pages/History/History';
 import LoginForm from './../Pages/LoginForm/LoginForm';
 import RegisterForm from './../Pages/RegisterForm/RegisterForm';
 import { createBrowserRouter } from 'react-router';
+import BillCarousel from '../Component/Banner/BillCarousel';
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
           {
             path: "history",
             Component: History,
+          },
+          {
+            path: "mybills",
+            Component: BillCarousel,
           },
         ],
       },

@@ -116,7 +116,8 @@ const PayPage = () => {
           <p className="text-sm font-bold  sm:text-base"><span className=" font-extrabold text-lg ">Due Day:</span> {billData.dueDay}</p>
 
           <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <button
+            <Link
+               to="/history"
               onClick={handlePay}
               disabled={paid}
               className={`w-full sm:w-auto px-6 py-2.5 rounded-md shadow-md text-sm sm:text-base font-medium transition-all duration-300 ${paid
@@ -125,7 +126,7 @@ const PayPage = () => {
                 }`}
             >
               {paid ? "Already Paid" : "Pay Your Bill"}
-            </button>
+            </Link>
             <Link
               to="/"
               className="w-full sm:w-auto text-center bg-pink-500 hover:bg-pink-600 text-white px-6 py-2.5 rounded-md shadow-md text-sm sm:text-base font-medium transition-all duration-300"
