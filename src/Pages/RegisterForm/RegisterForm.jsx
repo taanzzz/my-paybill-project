@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 
 const RegisterForm = () => {
   const { register } = useContext(AuthContext);
-  const [formData, setFormData] = useState({ name: '', email: '',password: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,7 +22,7 @@ const RegisterForm = () => {
     }
     try {
       const userCredential = await register(formData);
-      console.log('User registered:', userCredential.user);
+      // console.log('User registered:', userCredential.user);
       navigate('/');
     } catch (error) {
       alert(error.message);
@@ -30,13 +30,66 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-5 border rounded ">
-      <h2 className="text-2xl mb-4">Register</h2>
-      <input name="name" onChange={handleChange} placeholder="Name" required className="input input-bordered w-full mb-2" />
-      <input name="email" onChange={handleChange} placeholder="Email" required className="input input-bordered w-full mb-2" />
-      <input name="password" type="password" onChange={handleChange} placeholder="Password" required className="input input-bordered w-full mb-2" />
-      <button type="submit" className="btn btn-success w-full">Register</button>
-    </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-green-100 via-teal-200 to-cyan-200 px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-md w-full bg-[#FFFFFF] backdrop-blur-md p-8 rounded-2xl shadow-2xl space-y-6 border border-white/50"
+      >
+        <h2 className="text-3xl font-bold text-center text-teal-800">Create an Account</h2>
+
+        <div>
+          <label className="block text-sm font-medium text-teal-700 mb-1">Full Name</label>
+          <input
+            name="name"
+            onChange={handleChange}
+            placeholder="Enter your name"
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-teal-700 mb-1">Email Address</label>
+          <input
+            name="email"
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-teal-700 mb-1">Password</label>
+          <input
+            name="password"
+            type="password"
+            onChange={handleChange}
+            placeholder="Enter your password"
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-teal-600 text-white py-2 rounded-lg font-semibold hover:bg-teal-700 transition duration-200"
+        >
+          Register
+        </button>
+
+        <p className="text-center text-sm text-teal-700 mt-3">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="text-teal-600 hover:underline cursor-pointer font-semibold"
+          >
+            Login
+          </Link>
+        </p>
+      </form>
+    </div>
+
   );
 };
 

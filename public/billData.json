@@ -1,0 +1,65 @@
+{
+  "electricity": {
+    "id": "electricity",
+    "organization": "Desco",
+    "billType": "Electricity",
+    "amount": 1200,
+    "dueDate": "10-05-2025",
+    "dueDay": "Monday",
+    "logourl": "https://i.ibb.co.com/1GrJRRsR/DESCO-logo.webp"
+  },
+  "gas": {
+    "id": "gas",
+    "organization": "Nesco",
+    "billType": "Gas",
+    "amount": 850,
+    "dueDate": "18-05-2025",
+    "dueDay": "Tuesday",
+    "logourl": "https://i.postimg.cc/HLHXbWJg/nesco-logo-png-seeklogo-382775.png"
+  },
+  "water": {
+    "id": "water",
+    "organization": "Water Supply",
+    "billType": "Water",
+    "amount": 400,
+    "dueDate": "22-05-2025",
+    "dueDay": "Friday",
+    "logourl": "https://i.postimg.cc/WztMt9dq/chattogram-wasa-logo-png-seeklogo-362536.png"
+  },
+  "internet": {
+    "id": "internet",
+    "organization": "ISP",
+    "billType": "Internet",
+    "amount": 1000,
+    "dueDate": "30-05-2025",
+    "dueDay": "Saturday",
+    "logourl": "https://i.postimg.cc/9MmPHXVp/isp-internet-service-provider-white-text-illustration-free-vector.jpg"
+  },
+  "recharge": {
+    "id": "recharge",
+    "organization": "Mobile Carrier",
+    "billType": "Recharge",
+    "amount": 100,
+    "dueDate": "27-05-2025",
+    "dueDay": "Saturday",
+    "logourl": "https://i.postimg.cc/tCwznHtq/product-1590939048.jpg"
+  },
+  "cable": {
+    "id": "cable",
+    "organization": "Cable TV",
+    "billType": "Cable TV",
+    "amount": 500,
+    "dueDate": "25-05-2025",
+    "dueDay": "Sunday",
+    "logourl": "https://i.postimg.cc/wMBkLqGv/tv-tuner-black-glyph-icon-260nw-1841084629.webp"
+  },
+  "rent": {
+    "id": "rent",
+    "organization": "House Rent",
+    "billType": "Rent",
+    "amount": 15000,
+    "dueDate": "1-06-2025",
+    "dueDay": "Monday",
+    "logourl": "https://i.postimg.cc/KYqj4mBQ/rent-home-logo-vector-32088922.jpg"
+  }
+}

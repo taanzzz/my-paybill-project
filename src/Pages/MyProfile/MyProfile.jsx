@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 
-const MyProfile = ({ user }) => {
-  const { logout } = useContext(AuthContext);  
 
-  if (!user) return null;
+const MyProfile = () => {
+  const { user, logout, balance } = useContext(AuthContext); 
 
-  const defaultPhoto = 'https://i.ibb.co/com/TBmxTvQ4/images.png';
+  if (!user) return null; 
+
+  const defaultPhoto = 'https://i.postimg.cc/NM8HM3G0/images.png';
 
   const handleLogout = () => {
-    logout();  
+    logout(); 
   };
 
   return (
@@ -19,7 +20,7 @@ const MyProfile = ({ user }) => {
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content p-2 shadow bg-base-100 rounded-box w-52">
         <li><span>{user.displayName || 'Anonymous'}</span></li>
-        <li><span>Balance: 10000 BDT</span></li>
+        <li><span>Balance: {balance} BDT</span></li> 
         <li><button onClick={handleLogout}>Logout</button></li>
       </ul>
     </div>

@@ -4,12 +4,11 @@ import NavBar from './../Component/Header/NavBar';
 import Footer from '../Component/Footer/Footer';
 const Root = () => {
   return (
-    <div>
-      
+    <div className='min-h-screen flex flex-col'>
       <NavBar></NavBar>
-      <Outlet></Outlet>
+     <div className='flex-1'> <Outlet></Outlet>
+     </div>
       <Footer></Footer>
-      
     </div>
   )
 }
