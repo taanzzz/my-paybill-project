@@ -3,6 +3,7 @@ import BillCarousel from '../../Component/Banner/BillCarousel'
 import TrustedPartners from '../../Component/TrustedPartners/TrustedPartners'
 import BillSection from '../../Component/BillSection/BillSection'
 import BillServiceCards from '../../Component/BillServiceCards/BillServiceCards'
+import Counting from '../../Component/Counting/Counting'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <BillCarousel></BillCarousel>
       <TrustedPartners></TrustedPartners>
       <BillServiceCards></BillServiceCards>
+      <Counting></Counting>
     </div>
   )
 }
