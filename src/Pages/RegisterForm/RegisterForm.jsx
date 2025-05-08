@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
-
+import { toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const RegisterForm = () => {
   const { register } = useContext(AuthContext);
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -17,19 +18,20 @@ const RegisterForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (!validatePassword(formData.password)) {
-      alert("Invalid password: Must have uppercase, lowercase and be at least 6 characters.");
+      toast.error("❌ Invalid password:Must have uppercase,lowercase and be at least 6 characters.");
       return;
     }
     try {
       const userCredential = await register(formData);
-      // console.log('User registered:', userCredential.user);
-      navigate('/');
+      toast.success("🎉 Registration successful!");
+      setTimeout(() => navigate('/'), 1500);
     } catch (error) {
-      alert(error.message);
+       toast.error(`⚠️ Error: ${error.message}`);
     }
   };
 
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-green-100 via-teal-200 to-cyan-200 px-4">
       <form
         onSubmit={handleSubmit}
@@ -89,7 +91,7 @@ const RegisterForm = () => {
         </p>
       </form>
     </div>
-
+</>
   );
 };
 

@@ -1,6 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from './../../firebase/firebase.init';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const AuthContext = createContext();
 
@@ -101,6 +104,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
+    <>
     <AuthContext.Provider
       value={{
         user,
@@ -120,5 +124,36 @@ export const AuthProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
+    <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        toastClassName={(context) => {
+          const base = "flex items-start gap-3 shadow-lg rounded-xl px-5 py-4 border-l-4 animate-fade-in";
+          const type = context?.type;
+
+          switch (type) {
+            case "success":
+              return `${base} bg-green-100 border-green-500 text-green-800`;
+            case "error":
+              return `${base} bg-red-100 border-red-500 text-red-800`;
+            case "info":
+              return `${base} bg-blue-100 border-blue-500 text-blue-800`;
+            case "warning":
+              return `${base} bg-yellow-100 border-yellow-500 text-yellow-800`;
+            default:
+              return `${base} bg-white border-gray-400 text-gray-800`;
+          }
+        }}
+        bodyClassName="flex flex-col gap-1 text-sm font-medium"
+        progressClassName="bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-400 rounded-full"
+      />
+    </>
   );
 };

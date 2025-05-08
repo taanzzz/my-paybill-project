@@ -3,6 +3,7 @@ import { updatePassword, updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { auth, storage } from '../../firebase/firebase.init';
+import { toast } from 'react-toastify';
 
 
 const UserProfile = () => {
@@ -29,20 +30,24 @@ const UserProfile = () => {
       let finalPhotoURL = photoURL;
 
       if (imageFile) {
+        toast.info('📤 Uploading image...');
         finalPhotoURL = await handleImageUpload();
         setPhotoURL(finalPhotoURL);
+         toast.success('✅ Image uploaded successfully!');
       }
 
       await updateProfile(auth.currentUser, { displayName: name, photoURL: finalPhotoURL });
+      toast.success('✅ Profile info updated!');
 
       if (password) {
         await updatePassword(auth.currentUser, password);
+         toast.success('🔐 Password updated successfully!');
       }
 
-      alert('✅ Profile updated successfully!');
+      
       setEditMode(false);
     } catch (err) {
-      alert('❌ Error: ' + err.message);
+     toast.error(`❌ Error: ${err.message}`);
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { AuthContext } from './../AuthContext/AuthContext';
+import { toast } from 'react-toastify';
 
 
 const PayPage = () => {
@@ -18,26 +19,46 @@ const PayPage = () => {
   } = useContext(AuthContext);
 
   useEffect(() => {
-    const fetchBillData = async () => {
-      try {
-        const res = await fetch('/billData.json');
-        const data = await res.json();
-        const selectedBill = data[billType];
-        if (selectedBill) {
-          setBillData(selectedBill);
-        } else {
-          setBillData(null);
-        }
-      } catch (err) {
-        console.error("Failed to fetch bill data:", err);
+  const fetchBillData = async () => {
+    const loadingToastId = toast.loading('⏳ Loading bill details...');
+    try {
+      const res = await fetch('/billData.json');
+      const data = await res.json();
+      const selectedBill = data[billType];
+      if (selectedBill) {
+        setBillData(selectedBill);
+        toast.update(loadingToastId, {
+          render: '✅ Bill details loaded!',
+          type: 'success',
+          isLoading: false,
+          autoClose: 2000,
+        });
+      } else {
         setBillData(null);
-      } finally {
-        setLoading(false);
+        toast.update(loadingToastId, {
+          render: '❌ No data found for this bill type.',
+          type: 'error',
+          isLoading: false,
+          autoClose: 3000,
+        });
       }
-    };
+    } catch (err) {
+      console.error("Failed to fetch bill data:", err);
+      toast.update(loadingToastId, {
+        render: '🚫 Failed to load bill data. Please try again later.',
+        type: 'error',
+        isLoading: false,
+        autoClose: 3000,
+      });
+      setBillData(null);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchBillData();
-  }, [billType]);
+  fetchBillData();
+}, [billType]);
+
 
   useEffect(() => {
     if (billType) {
@@ -50,7 +71,7 @@ const PayPage = () => {
     if (!billData) return;
 
     if (billData.amount > balance) {
-      alert("Not enough balance to pay this bill.");
+       toast.warning('⚠️ Insufficient balance.Please recharge your account.');
       return;
     }
 
@@ -67,7 +88,7 @@ const PayPage = () => {
     addBillDetails(paidBillInfo);
 
     setPaid(true);
-    alert("Payment successful!");
+    toast.success('✅ Payment successful! Your bill has been cleared.');
   };
 
   if (loading) return <div className="text-center my-10">Loading...</div>;

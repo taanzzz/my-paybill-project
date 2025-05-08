@@ -2,7 +2,9 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+
+
 
 
 const LoginForm = () => {
@@ -25,41 +27,44 @@ const LoginForm = () => {
     try {
       if (isLogin) {
         await login(formData.email, formData.password);
-        toast.success('Logged in successfully!');
+         toast.success('✅ Logged in successfully!');
       } else {
         await register(formData);
+        toast.success('🎉 Signup successful!');
       }
-      navigate('/');
+     setTimeout(() => navigate('/'), 1500);
     } catch (err) {
       console.error(err);
-      alert('Authentication failed');
+      toast.error('❌ Authentication failed!');
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
       await googleSignIn();
-      navigate('/');
+      toast.success('✅ Google Sign-In successful!');
+    setTimeout(() => navigate('/'), 1500); 
     } catch (err) {
       console.error(err);
-      alert('Google Sign-In failed!');
+      toast.error('⚠️ Google Sign-In failed!');
     }
   };
 
   const handleLogout = async () => {
     await logout();
+    toast.info('👋 You have logged out!');
   };
   const handleForgetPassword = async () => {
   if (!formData.email) {
-    toast.error('Please enter your email first.');
+     toast.error('⚠️ Please enter your email first.');
     return;
   }
   try {
     await resetPassword(formData.email);
-    toast.success('Password reset email sent!');
+    toast.success('📧 Password reset email sent!');
   } catch (err) {
     console.error(err);
-    toast.error('Failed to send reset email.');
+    toast.error('⚠️ Failed to send reset email.');
   }
 };
 
@@ -144,7 +149,6 @@ const LoginForm = () => {
 
             <div className="flex justify-between text-sm text-white mt-2">
               <button type="button" onClick={handleForgetPassword} className="hover:underline">Forget Password</button>
-
               <button
                 type="button"
                 onClick={() => setIsLogin(!isLogin)}
@@ -182,6 +186,7 @@ const LoginForm = () => {
           </form>
         </div>
       </div>
+      
     </>
   );
 };
