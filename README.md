@@ -1,6 +1,11 @@
 # 💸 PayBill – Smart Online Bill Payment Platform
 
-**Live Site:** []()
+> *PayBill* is a fully responsive and modern online bill payment platform designed to provide users with a seamless and secure experience for managing, paying, and tracking their bills. This project delivers a clean user interface, robust payment functionality, and reliable authentication.
+
+![PayBill Homepage](https://i.ibb.co/hxwKNG89/Screenshot-2025-06-25-182720.png)
+
+
+**Live Site:** [http://talented-song.surge.sh/](http://talented-song.surge.sh/)
 
 > **PayBill** is a secure and modern bill payment platform built with React, Firebase Authentication, and Tailwind CSS. It enables users to register, log in, view pending bills, make real-time payments, and track their payment history — all within a sleek, fully responsive interface.
 
